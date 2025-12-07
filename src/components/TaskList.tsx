@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { fetchTasks, createTask } from '../api/repositories/tasks';
 import type { Task, NewTaskData } from '../types/Task';
 import TaskItem from './TaskItem';
+import TaskForm from './TaskForm';
 
 export default function TaskList() {
   const [tasks, setTasks] = useState<Task[]>([]);
@@ -27,10 +28,24 @@ export default function TaskList() {
     loadTasks();
   }, []);
 
+  const handleTaskCreated = async (taskData: NewTaskData) => {
+    try {
+      const createdTask = await createTask(taskData);
+      setTasks([createdTask, ...tasks]); 
+
+      setError(null);
+    } catch (err) {
+      console.error("Error creating task:", err);
+      setError('Failed to create task. Please try again.');
+      throw err;
+    }
+  };
+
   return (
     <div>
       <h1>📝 Task Tracker</h1>
 
+      <TaskForm onTaskCreated={handleTaskCreated} />
       <hr />
 
       {error && <p style={{ color: 'red' }}>Error: {error}</p>}
