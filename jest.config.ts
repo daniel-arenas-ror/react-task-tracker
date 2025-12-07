@@ -8,9 +8,14 @@ export default {
   // Specify the environment for testing (simulates a browser DOM)
   testEnvironment: 'jsdom',
 
+  transformIgnorePatterns: [
+    'node_modules/(?!(axios|some-other-esm-package)/)',
+  ],
+
   // How to transform files: use ts-jest for TypeScript/TSX files
   transform: {
     '^.+\\.(ts|tsx)$': 'ts-jest',
+    '^.+\\.(js|jsx)$': 'babel-jest',
   },
 
   // Module mapping for non-code assets
