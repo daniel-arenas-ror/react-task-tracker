@@ -1,7 +1,7 @@
 {
   "name": "task_tracker_frontend",
   "private": true,
-  "homepage": "https://daniel-arenas-ror.github.io/react-task-tracker/",
+  "homepage": ".",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
