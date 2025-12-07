@@ -27,6 +27,7 @@ export default new AxiosConf({
   baseURL: import.meta.env.VITE_BACKEND_URL, 
   timeout: DEFAULT_TIMEOUT,
   headers: { 
-    'content-type': 'application/json' 
+    'content-type': 'application/json',
+    'ngrok-skip-browser-warning': '69420',
   }
 }).instance();
