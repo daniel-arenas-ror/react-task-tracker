@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { fetchTasks, createTask } from '../api/repositories/tasks';
 import type { Task, NewTaskData } from '../types/Task';
+import TaskItem from './TaskItem';
 
 export default function TaskList() {
   const [tasks, setTasks] = useState<Task[]>([]);
@@ -12,6 +13,7 @@ export default function TaskList() {
 
     try {
       const data = await fetchTasks();
+
       setTasks(data);
       setError(null);
     } catch (err) {
@@ -37,11 +39,11 @@ export default function TaskList() {
         <p>Loading tasks...</p>
       ) : (
         <ul>
-          {tasks.map((task) => (
-            <li key={task.id}>
-              <strong>{task.id}</strong>: {task.description}
-            </li>
-          ))}
+          {
+            tasks.map(task => (
+              <TaskItem task={task} />
+            ))
+          }
         </ul>
       )}
     </div>

@@ -24,7 +24,6 @@ export class AxiosConf {
 }
 
 export default new AxiosConf({
-  // Use VITE_BACKEND_URL from environment variables (Vite-specific)
   baseURL: import.meta.env.VITE_BACKEND_URL, 
   timeout: DEFAULT_TIMEOUT,
   headers: { 
