@@ -11,6 +11,8 @@ export default function TaskList() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  console.error("Error creating task:");
+
   const loadTasks = async () => {
     setLoading(true);
 
