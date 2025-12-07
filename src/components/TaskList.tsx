@@ -56,7 +56,7 @@ export default function TaskList() {
         <ul>
           {
             tasks.map(task => (
-              <TaskItem task={task} />
+              <TaskItem key={task.id} task={task} />
             ))
           }
         </ul>
