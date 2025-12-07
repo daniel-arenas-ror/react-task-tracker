@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import TaskList from '../TaskList';
@@ -33,8 +32,8 @@ beforeEach(() => {
 
 test('shows loading state then renders tasks from fetchTasks', async () => {
   mockedFetchTasks.mockResolvedValue([
-    { id: 1, description: 'desc A' },
-    { id: 2, description: 'desc B' },
+    { id: 1, description: 'desc A', created_at: '', updated_at: '' },
+    { id: 2, description: 'desc B', created_at: '', updated_at: '' },
   ]);
 
   render(<TaskList />);
@@ -67,10 +66,10 @@ test('shows error message when fetchTasks fails', async () => {
 
 test('when TaskForm triggers onTaskCreated, createTask is called and new task is prepended', async () => {
   // initial tasks
-  mockedFetchTasks.mockResolvedValue([{ id: 1, description: 'x' }]);
+  mockedFetchTasks.mockResolvedValue([{ id: 1, description: 'x', created_at: '', updated_at: '' }]);
 
   // createTask will return the created task
-  mockedCreateTask.mockResolvedValue({ id: 2, description: 'Created from test' });
+  mockedCreateTask.mockResolvedValue({ id: 2, description: 'Created from test', created_at: '', updated_at: '' });
 
   render(<TaskList />);
 
