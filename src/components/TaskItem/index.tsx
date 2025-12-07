@@ -1,4 +1,5 @@
 import type { Task } from '../../types/Task';
+import { styles } from './TaskItem.styles';
 
 interface TaskItemProps {
   task: Task;
@@ -6,7 +7,13 @@ interface TaskItemProps {
 
 const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
   return (
-    <li> {task.description} </li>
+    <li style={styles.listItem}>
+      <div style={styles.textContainer}>
+        <p style={styles.description}>
+          {task.description}
+        </p>
+      </div>
+    </li>
   )
 }
 

@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { fetchTasks, createTask } from '../api/repositories/tasks';
 import type { Task, NewTaskData } from '../types/Task';
+import { styles } from './TaskList.styles';
 import TaskItem from './TaskItem';
 import TaskForm from './TaskForm';
+import Spinner from './Spinner';
 
 export default function TaskList() {
   const [tasks, setTasks] = useState<Task[]>([]);
@@ -42,25 +44,31 @@ export default function TaskList() {
   };
 
   return (
-    <div>
-      <h1>📝 Task Tracker</h1>
+    <div style={styles.outerContainer}>
+      <div style={styles.appContainer}>
+        <h1>📝 Task Tracker</h1>
 
-      <TaskForm onTaskCreated={handleTaskCreated} />
-      <hr />
+        <TaskForm onTaskCreated={handleTaskCreated} />
+        <hr style={styles.divider} />
 
-      {error && <p style={{ color: 'red' }}>Error: {error}</p>}
+        {error && <p style={styles.errorMessage}>Error: {error}</p>}
 
-      {loading ? (
-        <p>Loading tasks...</p>
-      ) : (
-        <ul>
-          {
-            tasks.map(task => (
-              <TaskItem key={task.id} task={task} />
-            ))
-          }
-        </ul>
-      )}
+        {loading ? (
+          <Spinner />
+        ) : (
+          <ul style={styles.taskList}>
+            {tasks.length === 0 ? (
+              <p style={styles.noTasksMessage}>
+                🎉 You don't have any tasks! Time to create one.
+              </p>
+            ) : (
+              tasks.map(task => (
+                <TaskItem key={task.id} task={task} />
+              ))
+            )}
+          </ul>
+        )}
+      </div>
     </div>
   )
 }

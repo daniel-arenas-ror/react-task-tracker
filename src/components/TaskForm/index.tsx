@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import type { FormEvent } from 'react';
 import type { NewTaskData } from '../../types/Task';
-
+import { styles } from './TaskForm.styles';
 interface TaskFormProps {
   onTaskCreated: (data: NewTaskData) => Promise<void>;
 }
@@ -33,8 +33,13 @@ const TaskForm: React.FC<TaskFormProps> = ({ onTaskCreated }) => {
     }
   };
 
+  const buttonStyle = {
+    ...styles.button,
+    ...(isSubmitting ? styles.buttonDisabled : {}),
+  };
+
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} style={styles.form}>
       <input
         type="text"
         value={description}
@@ -42,11 +47,12 @@ const TaskForm: React.FC<TaskFormProps> = ({ onTaskCreated }) => {
         placeholder="Enter task description here..."
         required
         disabled={isSubmitting}
+        style={styles.input}
       />
       <button 
         type="submit" 
         disabled={isSubmitting || !description.trim()}
-        style={{ padding: '10px 15px', fontSize: '16px', cursor: 'pointer', background: '#4CAF50', color: 'white', border: 'none' }}
+        style={buttonStyle}
       >
         {isSubmitting ? 'Adding...' : 'Add Task'}
       </button>
