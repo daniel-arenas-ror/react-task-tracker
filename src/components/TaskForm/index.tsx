@@ -33,11 +33,6 @@ const TaskForm: React.FC<TaskFormProps> = ({ onTaskCreated }) => {
     }
   };
 
-  const buttonStyle = {
-    ...styles.button,
-    ...(isSubmitting ? styles.buttonDisabled : {}),
-  };
-
   return (
     <form onSubmit={handleSubmit} style={styles.form}>
       <input
@@ -52,7 +47,7 @@ const TaskForm: React.FC<TaskFormProps> = ({ onTaskCreated }) => {
       <button 
         type="submit" 
         disabled={isSubmitting || !description.trim()}
-        style={buttonStyle}
+        style={styles.button}
       >
         {isSubmitting ? 'Adding...' : 'Add Task'}
       </button>

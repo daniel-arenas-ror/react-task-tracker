@@ -8,7 +8,7 @@ export const styles: Styles = {
     marginBottom: '20px',
   },
   input: {
-    flexGrow: 1, // Allows the input to take up most of the space
+    flexGrow: 1,
     padding: '10px',
     fontSize: '16px',
     marginRight: '10px',
@@ -21,14 +21,14 @@ export const styles: Styles = {
     padding: '10px 15px',
     fontSize: '16px',
     cursor: 'pointer',
-    background: '#4CAF50', // Green primary color
+    background: '#4CAF50',
     color: 'white',
     border: 'none',
     borderRadius: '4px',
     transition: 'background-color 0.2s',
   },
   buttonDisabled: {
-    backgroundColor: '#A5D6A7', // Lighter green when disabled
+    backgroundColor: '#A5D6A7',
     cursor: 'not-allowed',
   },
 };
