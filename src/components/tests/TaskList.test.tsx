@@ -72,7 +72,7 @@ test('shows error message when fetchTasks fails', async () => {
 
 test('when TaskForm triggers onTaskCreated, createTask is called and new task is prepended', async () => {
   // initial tasks
-  const existingTask = createMockTask(1, 'Existing Task', 'x');
+  const existingTask = createMockTask(1, 'Existing Task');
   mockedFetchTasks.mockResolvedValue([existingTask]);
 
   // createTask will return the created task (must match the structure passed in mock TaskForm)
