@@ -23,16 +23,6 @@ export const styles: Styles = {
     color: '#555',
     fontSize: '0.9em',
   },
-  statusTag: (color: string): CSSProperties => ({
-    fontWeight: 'bold',
-    padding: '4px 8px',
-    borderRadius: '4px',
-    backgroundColor: color,
-    color: 'white',
-    fontSize: '0.8em',
-    minWidth: '90px',
-    textAlign: 'center',
-  }),
   dueDate: {
     display: 'block',
     marginTop: '5px',
