@@ -5,6 +5,7 @@ import { styles } from './TaskList.styles';
 import TaskItem from './TaskItem';
 import TaskForm from './TaskForm';
 import Spinner from './Spinner';
+import Footer from './Footer';
 
 export default function TaskList() {
   const [tasks, setTasks] = useState<Task[]>([]);
@@ -68,6 +69,7 @@ export default function TaskList() {
             )}
           </ul>
         )}
+        <Footer />
       </div>
     </div>
   )
