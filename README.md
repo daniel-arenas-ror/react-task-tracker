@@ -58,42 +58,46 @@ The application is structured to promote Separation of Concerns, with data manag
 
 ### Component	Responsibility
 
-[TaskList](https://github.com/daniel-arenas-ror/react-task-tracker/blob/main/src/components/TaskList.tsx)	State Management, API Orchestration, Loading/Error Handling.
-TaskForm	User Input, local form state management, calling the parent's onTaskCreated prop.
-TaskItem	Presentation of a single task's data and status.
-api/tasks.ts	Functions to interact with the backend (uses Connector).
-types/Task.ts	TypeScript interfaces for strict data modeling.
-axiosConf.ts	Configures the central, interceptor-equipped Axios instance.
+- [TaskList](https://github.com/daniel-arenas-ror/react-task-tracker/blob/main/src/components/TaskList.tsx)	State Management, API Orchestration, Loading/Error Handling.
+- [TaskForm](https://github.com/daniel-arenas-ror/react-task-tracker/blob/main/src/components/TaskForm/index.tsx)	User Input, local form state management, calling the parent's onTaskCreated prop.
+- [TaskItem](https://github.com/daniel-arenas-ror/react-task-tracker/blob/main/src/components/TaskItem/index.tsx)	Presentation of a single task's data and status.
+- [api/repositories/tasks.ts](https://github.com/daniel-arenas-ror/react-task-tracker/blob/main/src/api/repositories/tasks/index.ts)	Functions to interact with the backend (uses Connector).
+- [types/Task.ts](https://github.com/daniel-arenas-ror/react-task-tracker/blob/main/src/types/Task.ts)	TypeScript interfaces for strict data modeling.
+- [axiosConf.ts](https://github.com/daniel-arenas-ror/react-task-tracker/blob/main/src/api/axiosConf/index.ts)	Configures the central, interceptor-equipped Axios instance.
 
 ## Why We Chose Vite
 
-We chose Vite over traditional bundlers (like Webpack/CRA) for its superior developer experience and performance:
+We chose Vite over traditional bundlers for its superior developer experience and performance:
 
-    Speed: Vite utilizes Native ES Modules (ESM) in development, leading to instant server startup and lightning-fast Hot Module Replacement (HMR). It avoids the need for a full re-bundling step every time you save a file.
+    **Speed:** Vite utilizes Native ES Modules in development, leading to instant server startup and lightning fast Hot Module Replacement. It avoids the need for a full re-bundling step every time you save a file.  
 
-    Modern Tooling: It uses esbuild (written in Go) for extremely fast TypeScript and JSX transformation, resulting in a development loop that feels instantaneous.
+    **Modern Tooling:** It uses esbuild for extremely fast TypeScript and JSX transformation, resulting in a development loop that feels instantaneous.  
 
-    Simplicity: It requires minimal configuration out of the box, handling TypeScript and asset bundling seamlessly.
+    **Simplicity:** It requires minimal configuration out of the box, handling TypeScript and asset bundling seamlessly.
 
-🧪 Running Tests (Jest)
+## Running Tests (Jest) - This is a WIP feature
 
 The project uses Jest with ts-jest for unit and component testing, leveraging React Testing Library for high-quality, user-centric tests.
-How to Execute Tests
+
+### How to Execute Tests
 
 Run the full test suite from the root of the frontend directory:
-Bash
 
+```
 npm test
+```
 
-Continuous Integration (CI)
+## Continuous Integration (CI)
 
-Tests are automatically executed on every Pull Request via GitHub Actions (configured in .github/workflows/ci.yml).
-🚢 Deployment (GitHub Pages)
+Tests are automatically executed on every Pull Request via GitHub Actions configured in [.github/workflows/ci.yml](https://github.com/daniel-arenas-ror/react-task-tracker/blob/main/.github/workflows/test.yml).
+
+## Deployment (GitHub Pages)
 
 This guide shows how to deploy your client-side-only React application to GitHub Pages.
-1. Configure the homepage
 
-Since GitHub Pages serves content from a subdirectory (e.g., yourusername.github.io/your-repo-name/), you must tell Vite where the application will be hosted.
+### Configure the homepage
+
+Since GitHub Pages serves content from a subdirectory (e.g., yourusername.github.io/your-repo-name/), you must tell Vite where the application will be hosted.  
 
 In your package.json, add the homepage property, replacing [REPO_NAME] with your actual repository name:
 JSON
@@ -126,8 +130,10 @@ export default defineConfig({
 Add a custom script to your package.json to handle the build and deployment using the gh-pages package:
 Bash
 
+```
 # Install the gh-pages package
 npm install --save-dev gh-pages
+```
 
 In package.json:
 JSON
@@ -145,9 +151,10 @@ JSON
 4. Deploy
 
 Execute the deployment script:
-Bash
 
+```
 npm run deploy
+```
 
 This script will:
 
