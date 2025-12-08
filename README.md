@@ -1,6 +1,6 @@
 ## Task Tracker Frontend Application
 
-This repository contains the single-page application frontend for the Task Tracker, built with React, TypeScript, and bundled with Vite. 
+This repository contains the single-page application frontend for the Task Tracker, built with React, TypeScript, and bundled with Vite. this project is running [here](https://daniel-arenas-ror.github.io/react-task-tracker/)
 
 # Technology Stack
 
