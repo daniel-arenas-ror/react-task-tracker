@@ -25,7 +25,6 @@ You must have the following software installed:
 ## Project Setup
 
 Navigate to the frontend directory and install dependencies:
-Bash  
 
 ```
 # Install dependencies
@@ -35,18 +34,15 @@ npm install
 ## Environment Configuration
 
 The application requires the backend API URL to function.
+Create a file named .env.development in the root of the frontend directory.  
+Add the environment variable for your Rails backend URL (which usually runs on port 3000):  
 
-    Create a file named .env.development in the root of the frontend directory.
-
-    Add the environment variable for your Rails backend URL (which usually runs on port 3000):
-
-# .env.development
+### .env.development
 VITE_BACKEND_URL=http://localhost:3000/api/v1
 
-# Run the Development Server
+### Run the Development Server
 
 Start the Vite development server. It will typically open the application at http://localhost:5173.
-Bash
 
 ```
 npm run dev
@@ -69,11 +65,11 @@ The application is structured to promote Separation of Concerns, with data manag
 
 We chose Vite over traditional bundlers for its superior developer experience and performance:
 
-    **Speed:** Vite utilizes Native ES Modules in development, leading to instant server startup and lightning fast Hot Module Replacement. It avoids the need for a full re-bundling step every time you save a file.  
+**Speed:** Vite utilizes Native ES Modules in development, leading to instant server startup and lightning fast Hot Module Replacement. It avoids the need for a full re-bundling step every time you save a file.  
 
-    **Modern Tooling:** It uses esbuild for extremely fast TypeScript and JSX transformation, resulting in a development loop that feels instantaneous.  
+**Modern Tooling:** It uses esbuild for extremely fast TypeScript and JSX transformation, resulting in a development loop that feels instantaneous.  
 
-    **Simplicity:** It requires minimal configuration out of the box, handling TypeScript and asset bundling seamlessly.
+**Simplicity:** It requires minimal configuration out of the box, handling TypeScript and asset bundling seamlessly.
 
 ## Running Tests (Jest) - This is a WIP feature
 
@@ -102,6 +98,7 @@ Since GitHub Pages serves content from a subdirectory (e.g., yourusername.github
 In your package.json, add the homepage property, replacing [REPO_NAME] with your actual repository name:
 JSON
 
+```
 // package.json (Snippet)
 {
   "name": "task-tracker-frontend",
@@ -110,13 +107,15 @@ JSON
   "homepage": "https://[YOUR-GITHUB-USERNAME].github.io/[REPO_NAME]", 
   // ... rest of file
 }
+```
 
-2. Update Vite Config for Base Path
+### Update Vite Config for Base Path
 
 Vite needs to know the base path for assets. Create or update vite.config.ts:
 TypeScript
 
 // vite.config.ts
+```
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
@@ -125,7 +124,9 @@ export default defineConfig({
   base: '/[REPO_NAME]/', // Replace with your repository name!
 });
 
-3. Build and Deploy Script
+```
+
+### Build and Deploy Script
 
 Add a custom script to your package.json to handle the build and deployment using the gh-pages package:
 Bash
@@ -136,7 +137,7 @@ npm install --save-dev gh-pages
 ```
 
 In package.json:
-JSON
+```
 
 // package.json (Scripts)
 "scripts": {
@@ -147,8 +148,9 @@ JSON
   "predeploy": "npm run build",
   "deploy": "gh-pages -d dist"
 },
+```
 
-4. Deploy
+### Deploy
 
 Execute the deployment script:
 
@@ -158,8 +160,8 @@ npm run deploy
 
 This script will:
 
-    Run npm run build (predeploy).
+1. Run npm run build (predeploy).
 
-    Push the contents of the generated dist folder to the gh-pages branch of your repository.
+1. Push the contents of the generated dist folder to the gh-pages branch of your repository.
 
-    GitHub Pages will then automatically serve your application from that branch.
+1. GitHub Pages will then automatically serve your application from that branch.
