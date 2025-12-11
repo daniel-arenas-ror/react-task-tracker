@@ -6,9 +6,21 @@ interface TaskItemProps {
 }
 
 const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
+const isDone = task.done;
+
+const listItemStyle = {
+    ...styles.listItem,
+    ...(isDone ? styles.listItemDone : {}),
+  };
+
+  const textContainerStyle = {
+    ...styles.textContainer,
+    ...(isDone ? styles.textContainerDone : {}),
+  };
+
   return (
-    <li style={styles.listItem}>
-      <div style={styles.textContainer}>
+    <li style={listItemStyle}>
+      <div style={textContainerStyle}>
         <p style={styles.description}>
           {task.description}
         </p>

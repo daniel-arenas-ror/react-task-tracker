@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { fetchTasks, createTask } from '../api/repositories/tasks';
+import { fetchTasks, createTask, updateTask } from '../api/repositories/tasks';
 import type { Task, NewTaskData } from '../types/Task';
 import { styles } from './TaskList.styles';
 import TaskItem from './TaskItem';
@@ -42,6 +42,11 @@ export default function TaskList() {
       setError('Failed to create task. Please try again.');
       throw err;
     }
+  };
+
+  const updateDoneStatus = async (taskId: number, done: boolean) => {
+    const taskUpdate = await updateTask(taskId, { done });
+    setTasks(tasks.map(t => t.id === taskId ? taskUpdate : t));
   };
 
   return (

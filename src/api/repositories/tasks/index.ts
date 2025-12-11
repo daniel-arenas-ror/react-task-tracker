@@ -8,3 +8,7 @@ export const fetchTasks = (): Promise<Task[]> => {
 export const createTask = (taskData: NewTaskData): Promise<Task> => {
   return connector.post('/tasks', { task: taskData }) as Promise<Task>;
 };
+
+export const updateTask = (taskId: number, updateData: Partial<Task>): Promise<Task> => {
+  return connector.put(`/tasks/${taskId}`, { task: updateData }) as Promise<Task>;
+};
