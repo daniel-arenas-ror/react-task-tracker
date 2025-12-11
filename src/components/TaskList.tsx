@@ -54,8 +54,7 @@ export default function TaskList() {
       await deleteTask(taskId);
       setTasks(tasks.filter(t => t.id !== taskId));
     } catch (err) {
-      console.error("Error deleting task:", err);
-      setError('Failed to delete task. Please try again.');
+      setError(err?.response?.data?.errors[0] || 'Failed to delete task. Please try again.');
     }
   }
 
