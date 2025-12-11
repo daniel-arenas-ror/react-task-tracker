@@ -29,4 +29,13 @@ export const styles: Styles = {
     color: '#999',
     fontSize: '0.8em',
   },
+  listItemDone: {
+    opacity: 0.6,
+    borderBottom: '1px solid #dcdcdc',
+    backgroundColor: '#f9f9f9',
+  },
+  textContainerDone: {
+    textDecoration: 'line-through',
+    color: '#a0a0a0',
+  },
 };
