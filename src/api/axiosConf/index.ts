@@ -24,7 +24,7 @@ export class AxiosConf {
 }
 
 export default new AxiosConf({
-  baseURL: "https://9759bf0f12b7.ngrok-free.app/api/v1/", 
+  baseURL: import.meta.env.VITE_BACKEND_URL, 
   timeout: DEFAULT_TIMEOUT,
   headers: { 
     'content-type': 'application/json',

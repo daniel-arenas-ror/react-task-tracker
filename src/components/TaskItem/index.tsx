@@ -3,9 +3,10 @@ import { styles } from './TaskItem.styles';
 
 interface TaskItemProps {
   task: Task;
+  updateDoneStatus: (taskId: number, done: boolean) => void;
 }
 
-const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
+const TaskItem: React.FC<TaskItemProps> = ({ task, updateDoneStatus }) => {
 const isDone = task.done;
 
 const listItemStyle = {
@@ -19,7 +20,7 @@ const listItemStyle = {
   };
 
   return (
-    <li style={listItemStyle}>
+    <li style={listItemStyle} onClick={() => { updateDoneStatus(task.id, !task.done) }}>
       <div style={textContainerStyle}>
         <p style={styles.description}>
           {task.description}
