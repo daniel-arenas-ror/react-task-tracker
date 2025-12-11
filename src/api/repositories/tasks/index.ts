@@ -12,3 +12,7 @@ export const createTask = (taskData: NewTaskData): Promise<Task> => {
 export const updateTask = (taskId: number, updateData: Partial<Task>): Promise<Task> => {
   return connector.put(`/tasks/${taskId}`, { task: updateData }) as Promise<Task>;
 };
+
+export const deleteTask = (taskId: number): Promise<void> => {
+  return connector.delete(`/tasks/${taskId}`) as Promise<void>;
+}

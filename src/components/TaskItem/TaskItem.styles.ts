@@ -38,4 +38,23 @@ export const styles: Styles = {
     textDecoration: 'line-through',
     color: '#a0a0a0',
   },
+  actionsContainer: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '10px', // Space between status tag and delete button
+    marginLeft: '20px',
+  },
+  deleteButton: {
+    background: 'transparent',
+    border: 'none',
+    color: '#D32F2F', // Red color for delete
+    cursor: 'pointer',
+    fontSize: '1.2em',
+    padding: '5px',
+    lineHeight: 1,
+    transition: 'color 0.2s',
+  },
+  deleteButtonHover: {
+    color: '#B71C1C',
+  },
 };

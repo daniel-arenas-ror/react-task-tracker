@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { fetchTasks, createTask, updateTask } from '../api/repositories/tasks';
+import { fetchTasks, createTask, updateTask, deleteTask } from '../api/repositories/tasks';
 import type { Task, NewTaskData } from '../types/Task';
 import { styles } from './TaskList.styles';
 import TaskItem from './TaskItem';
@@ -49,6 +49,16 @@ export default function TaskList() {
     setTasks(tasks.map(t => t.id === taskId ? taskUpdate : t));
   };
 
+  const handleTaskDeleted = async (taskId: number) => {
+    try {
+      await deleteTask(taskId);
+      setTasks(tasks.filter(t => t.id !== taskId));
+    } catch (err) {
+      console.error("Error deleting task:", err);
+      setError('Failed to delete task. Please try again.');
+    }
+  }
+
   return (
     <div style={styles.outerContainer}>
       <div style={styles.appContainer}>
@@ -69,7 +79,7 @@ export default function TaskList() {
               </p>
             ) : (
               tasks.map(task => (
-                <TaskItem key={task.id} task={task} updateDoneStatus={updateDoneStatus} />
+                <TaskItem key={task.id} task={task} updateDoneStatus={updateDoneStatus} handleTaskDeleted={handleTaskDeleted} />
               ))
             )}
           </ul>
